@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-import 'Splash_View_Body.dart';
+import 'Widget/Splash_View_Body.dart';
 
 class SplashView extends StatelessWidget {
   const SplashView

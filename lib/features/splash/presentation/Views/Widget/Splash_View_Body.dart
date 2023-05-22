@@ -4,8 +4,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
-import '../../../../constants.dart';
-import '../../../../core/utils/assets.dart';
+import '../../../../../constants.dart';
+import '../../../../../core/utils/assets.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
