@@ -8,7 +8,7 @@ Widget CustomAppBar() {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 45),
       child: Row(
         children: [
-          Image.asset(AssetData.logo, height: 18),
+          Image.asset(AssetData.logo, height: 20),
           const Spacer(),
           IconButton(
               onPressed: () {},
