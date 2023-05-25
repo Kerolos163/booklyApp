@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/assets.dart';
+import 'custom_item.dart';
 import 'customappbar.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -12,11 +13,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        CustomAppBar(),
-      ],
+      children: [CustomAppBar(), ListViewItem(context)],
     );
   }
-
-
 }
