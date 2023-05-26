@@ -8,8 +8,7 @@ Widget ListViewItem(context) {
     child: Container(
       decoration: BoxDecoration(
           color: Colors.amber,
-          image:
-              const DecorationImage(image: AssetImage(AssetData.testimage)),
+          image: const DecorationImage(image: AssetImage(AssetData.testimage)),
           borderRadius: BorderRadius.circular(16)),
     ),
   );

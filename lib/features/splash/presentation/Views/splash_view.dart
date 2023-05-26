@@ -5,8 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'Widget/Splash_View_Body.dart';
 
 class SplashView extends StatelessWidget {
-  const SplashView
-({super.key});
+  const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
