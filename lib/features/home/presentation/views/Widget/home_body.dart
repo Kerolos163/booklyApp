@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/assets.dart';
+import '../../../../../core/utils/styles.dart';
+import 'List_view.dart';
 import 'custom_item.dart';
 import 'customappbar.dart';
 
@@ -13,27 +15,18 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [CustomAppBar(), BooklyListView(context)],
-    );
-  }
-
-  Widget BooklyListView(context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .25,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 20.0),
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ListViewItem(context),
-            );
-          },
-          itemCount: 5,
-          scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomAppBar(),
+        BooklyListView(context),
+        const SizedBox(
+          height: 50,
         ),
-      ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: Text("Best Seller", style: Styles.TitleMedium),
+        ),
+      ],
     );
   }
 }
