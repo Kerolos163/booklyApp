@@ -24,9 +24,30 @@ class HomeViewBody extends StatelessWidget {
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
-          child: Text("Best Seller", style: Styles.TitleMedium),
+          child: Text("Best Seller", style: Styles.textStyle18),
         ),
+        BestSellerListViewItem()
       ],
+    );
+  }
+
+  BestSellerListViewItem() {
+    return SizedBox(
+      height: 130,
+      child: Row(
+        children: [
+          AspectRatio(
+            aspectRatio: 2.5 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.amber,
+                  image: const DecorationImage(
+                      image: AssetImage(AssetData.testimage)),
+                  borderRadius: BorderRadius.circular(8)),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
