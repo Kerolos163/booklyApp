@@ -5,7 +5,7 @@ import '../../../../../core/utils/assets.dart';
 
 Widget CustomAppBar() {
   return Padding(
-    padding: const EdgeInsets.only(left: 30, right: 30, top: 50, bottom: 15),
+    padding: const EdgeInsets.only(left: 30, right: 10, top: 50, bottom: 15),
     child: Row(
       children: [
         Image.asset(AssetData.logo, height: 20),
