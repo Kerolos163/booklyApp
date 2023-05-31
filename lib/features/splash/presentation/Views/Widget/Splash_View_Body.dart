@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/utils/assets.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -67,15 +69,16 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Get.to(() => const homeview(),
-            transition: Transition.fade, duration: KTranstionDuration);
+        // Get.to(() => const homeview(),
+        //     transition: Transition.fade, duration: KTranstionDuration);
+        GoRouter.of(context).push(AppRouter.Khomeview);
       },
     );
   }
 
   void initSlidingAnimation() {
     animationcontroller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     slidingAnimation =
         Tween<Offset>(begin: const Offset(0, 5), end: Offset.zero)
             .animate(animationcontroller);
