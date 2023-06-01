@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'custom_item.dart';
+import 'custom_BooK_Image_item.dart';
+
 
 Widget BooklyListView(context) {
   return Padding(
@@ -11,7 +12,7 @@ Widget BooklyListView(context) {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(left: 15),
-            child: ListViewItem(context),
+            child: CustomBookImage(context),
           );
         },
         itemCount: 10,
