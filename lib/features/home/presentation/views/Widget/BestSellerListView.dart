@@ -9,7 +9,7 @@ BestSellerListView() {
     itemBuilder: (context, index) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
-        child: BestSellerListViewItem(context),
+        child: BookListViewItem(context),
       );
     },
     itemCount: 10,

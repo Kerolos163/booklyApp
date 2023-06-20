@@ -8,7 +8,7 @@ import '../../../../../core/utils/assets.dart';
 import '../../../../../core/utils/styles.dart';
 import 'Book_rating.dart';
 
-BestSellerListViewItem(context) {
+BookListViewItem(context) {
   return InkWell(
     onTap: () {
       GoRouter.of(context).push(AppRouter.Kbookdetailsview);
