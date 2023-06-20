@@ -12,6 +12,7 @@ Custom_Search_TextField() {
             child: Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 22,
+              color: Colors.grey,
             ),
           ),
         ),
