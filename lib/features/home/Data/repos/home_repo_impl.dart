@@ -4,13 +4,28 @@ import 'package:bookly_app/features/home/Data/models/book_model/book_model.dart'
 
 import 'package:bookly_app/core/errors/failures.dart';
 
+import '../../../../core/utils/api_service.dart';
 import 'home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
+  final ApiService api;
+
+  HomeRepoImpl(this.api);
   @override
-  Future<Either<Failures, List<BookModel>>> FetchBestsellerBooks() {
-    // TODO: implement FetchBestsellerBooks
-    throw UnimplementedError();
+  Future<Either<Failures, List<BookModel>>> FetchNewestBooks() async {
+    try {
+      var data = await api.get(
+          end_point:
+              'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:programming');
+      List<BookModel> Books = [];
+      for (var item in data["items"]) {
+        Books.add(BookModel.fromJson(item));
+      }
+      return right(Books);
+    } on Exception catch (e) {
+      // TODO
+      return left(FailuresServer());
+    }
   }
 
   @override
