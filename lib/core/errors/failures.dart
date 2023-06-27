@@ -20,7 +20,7 @@ class FailuresServer extends Failures {
         return FailuresServer("Bad Certificate TimeOut with ApiServer");
       case DioExceptionType.badResponse:
         return FailuresServer.fromResponse(
-            dioException.response!.statusCode, dioException.response!.data);
+          dioException.response!.statusCode, dioException.response!.data);
       case DioExceptionType.cancel:
         return FailuresServer("Request to APIServer Was Canceled");
       case DioExceptionType.connectionError:
