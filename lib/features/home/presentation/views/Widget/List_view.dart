@@ -19,10 +19,10 @@ Widget BooklyListView(context) {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(left: 15),
-                  child: CustomBookImage(context),
+                  child: CustomBookImage(context,img: state.Books[index].volumeInfo.imageLinks!.thumbnail as String ),
                 );
               },
-              itemCount: 10,
+              itemCount: state.Books.length,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
             ),
