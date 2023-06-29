@@ -39,7 +39,7 @@ BookDetailsSection(context) {
         const SizedBox(
           height: 14,
         ),
-        BookRating(MAA: MainAxisAlignment.center),
+        // BookRating(MAA: MainAxisAlignment.center),
         const SizedBox(
           height: 37,
         ),

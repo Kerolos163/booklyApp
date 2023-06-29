@@ -41,7 +41,7 @@ class Search_View_Bpdy extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: BookListViewItem(context),
+          // child: BookListViewItem(context),
         );
       },
       itemCount: 10,

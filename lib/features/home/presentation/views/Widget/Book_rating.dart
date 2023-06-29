@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/styles.dart';
 
-BookRating({MAA = MainAxisAlignment.start}) {
+BookRating(
+    {MAA = MainAxisAlignment.start, required int Rating, required int Count}) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 40),
     child: Row(
@@ -17,8 +18,8 @@ BookRating({MAA = MainAxisAlignment.start}) {
         const SizedBox(
           width: 6,
         ),
-        const Text(
-          "4.8",
+        Text(
+          "$Rating",
           style: Styles.textStyle16,
         ),
         const SizedBox(
@@ -27,7 +28,7 @@ BookRating({MAA = MainAxisAlignment.start}) {
         Opacity(
           opacity: .5,
           child: Text(
-            "(2390)",
+            "$Count",
             style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
           ),
         ),

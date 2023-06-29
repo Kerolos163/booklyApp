@@ -15,6 +15,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics:const BouncingScrollPhysics(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,7 +26,7 @@ class HomeViewBody extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
-            child: Text("Best Seller", style: Styles.textStyle18),
+            child: Text("Newest Books", style: Styles.textStyle18),
           ),
           const SizedBox(
             height: 10,
