@@ -22,7 +22,7 @@ BookListViewItem(context, BookModel Book) {
         child: Row(
           children: [
             CustomBookImage(context,
-                img: Book.volumeInfo.imageLinks!.thumbnail as String),
+                img: Book.volumeInfo.imageLinks?.thumbnail ?? ""),
             const SizedBox(
               width: 30,
             ),

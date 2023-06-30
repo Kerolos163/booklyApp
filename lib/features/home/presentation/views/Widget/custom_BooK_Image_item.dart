@@ -14,7 +14,7 @@ Widget CustomBookImage(context, {required String img}) {
         placeholder: (context, url) =>
             const Center(child: CircularProgressIndicator()),
         errorWidget: (context, url, error) => const Icon(
-            Icons.signal_wifi_statusbar_connected_no_internet_4_sharp),
+            Icons.error),
       ),
     ),
   );
