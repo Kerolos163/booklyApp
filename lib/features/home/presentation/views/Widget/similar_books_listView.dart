@@ -1,20 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../constants.dart';
+import '../../../../../core/widget/Custom_error_widget.dart';
+import '../../../../../core/widget/custom_Loading_Indicator.dart';
+import '../../view_models/Similar_Books_Cubit/cubit.dart';
+import '../../view_models/Similar_Books_Cubit/state.dart';
 import 'custom_BooK_Image_item.dart';
 
 SimilarBooksListview(context) {
-  return SizedBox(
-    height: MediaQuery.of(context).size.height * .15,
-    child: ListView.builder(
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: CustomBookImage(context,img: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fe2.365dm.com%2F13%2F05%2F800x600%2F168311249_2941386.jpg%3F20130813223857&tbnid=Yw2gisYd9b_xJM&vet=12ahUKEwjRufWryub_AhUYmicCHQ1wANgQMygLegUIARDQAQ..i&imgrefurl=https%3A%2F%2Fwww.skysports.com%2Fcristiano-ronaldo&docid=XF72BTLrnu0HXM&w=800&h=600&q=cr7&ved=2ahUKEwjRufWryub_AhUYmicCHQ1wANgQMygLegUIARDQAQ"),
+  return BlocBuilder<Similar_Books_Cubit, Similar_Books_State>(
+    builder: (context, state) {
+      if (state is SimilarBooksSuccessState) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * .15,
+          child: ListView.builder(
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: CustomBookImage(context, img: KimagetoNullImage),
+              );
+            },
+            itemCount: 10,
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+          ),
         );
-      },
-      itemCount: 10,
-      scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
-    ),
+      } else if (state is SimilarBooksFailureState) {
+        return Error_Widget(Message: state.error);
+      } else {
+        return CustomLoadingIndicator();
+      }
+    },
   );
 }

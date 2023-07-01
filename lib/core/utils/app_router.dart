@@ -1,14 +1,19 @@
+import 'package:bookly_app/core/utils/service_locator.dart';
+import 'package:bookly_app/features/home/Data/models/book_model/book_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/home/Data/repos/home_repo_impl.dart';
+import '../../features/home/presentation/view_models/Similar_Books_Cubit/cubit.dart';
 import '../../features/home/presentation/views/Book_Details_View.dart';
 import '../../features/home/presentation/views/home.dart';
 import '../../features/search/presentation/views/Search_view.dart';
 import '../../features/splash/presentation/Views/splash_view.dart';
 
 abstract class AppRouter {
-  static const Khomeview='/homeview';
-  static const Kbookdetailsview='/bookdetailsview';
-  static const KSearchView='/searchview';
+  static const Khomeview = '/homeview';
+  static const Kbookdetailsview = '/bookdetailsview';
+  static const KSearchView = '/searchview';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -21,7 +26,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Kbookdetailsview,
-        builder: (context, state) => const BookViewDetails(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => Similar_Books_Cubit(getIt.get<HomeRepoImpl>()),
+          child:  BookViewDetails(bookModel: state.extra as BookModel),
+        ),
       ),
       GoRoute(
         path: KSearchView,

@@ -13,7 +13,7 @@ import 'Book_rating.dart';
 BookListViewItem(context, BookModel Book) {
   return InkWell(
     onTap: () {
-      GoRouter.of(context).push(AppRouter.Kbookdetailsview);
+      GoRouter.of(context).push(AppRouter.Kbookdetailsview,extra: Book);
     },
     child: Padding(
       padding: const EdgeInsets.only(left: 30),
