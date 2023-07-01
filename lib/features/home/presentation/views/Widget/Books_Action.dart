@@ -1,43 +1,51 @@
 import 'package:bookly_app/features/home/Data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/view_models/URL_cubit/cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/widget/custom_Button.dart';
+import '../../view_models/URL_cubit/state.dart';
 
 Widget BookAction(BookModel Book) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 8),
-    child: Row(
-      children: [
-        Expanded(
-          child: Custom_Button(
-              txt: "FREE",
-              BackgroundColor: Colors.white,
-              TextColor: Colors.black,
-              BorderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16)),
-              onPressed: () {
-                print("FREE");
-              }),
+  return BlocBuilder<URLCubit, URL_State>(
+    builder: (context, state) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: Custom_Button(
+                  txt: "FREE",
+                  BackgroundColor: Colors.white,
+                  TextColor: Colors.black,
+                  BorderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      bottomLeft: Radius.circular(16)),
+                  onPressed: () {
+                    print("FREE");
+                  }),
+            ),
+            if (state is URLLoadingState)
+              const Center(child: CircularProgressIndicator())
+            else
+              Expanded(
+                child: Custom_Button(
+                    txt: "Preview",
+                    fontsize: 16,
+                    BackgroundColor: const Color(0xffEF8262),
+                    TextColor: Colors.white,
+                    BorderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(16),
+                        bottomRight: Radius.circular(16)),
+                    onPressed: () async {
+                      final Uri url = Uri.parse(Book.volumeInfo.previewLink!);
+                      URLCubit.get(context).got_TO_URL(url: url);
+                    }),
+              ),
+          ],
         ),
-        Expanded(
-          child: Custom_Button(
-              txt: "Preview",
-              fontsize: 16,
-              BackgroundColor: const Color(0xffEF8262),
-              TextColor: Colors.white,
-              BorderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(16),
-                  bottomRight: Radius.circular(16)),
-              onPressed: () async {
-                final Uri url = Uri.parse(Book.volumeInfo.previewLink!);
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                }
-              }),
-        ),
-      ],
-    ),
+      );
+    },
   );
 }
