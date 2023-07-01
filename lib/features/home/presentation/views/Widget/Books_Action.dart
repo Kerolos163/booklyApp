@@ -9,7 +9,7 @@ Widget BookAction() {
       children: [
         Expanded(
           child: Custom_Button(
-              txt: "19.99€",
+              txt: "FREE",
               BackgroundColor: Colors.white,
               TextColor: Colors.black,
               BorderRadius: const BorderRadius.only(
@@ -18,7 +18,7 @@ Widget BookAction() {
         ),
         Expanded(
           child: Custom_Button(
-              txt: "Free preview",
+              txt: "Preview",
               fontsize: 16,
               BackgroundColor: const Color(0xffEF8262),
               TextColor: Colors.white,

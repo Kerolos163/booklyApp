@@ -18,10 +18,12 @@ SimilarBooksListview(context) {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: CustomBookImage(context, img: KimagetoNullImage),
+                child: CustomBookImage(context,
+                    img: state.Books[index].volumeInfo.imageLinks?.thumbnail ??
+                        KimagetoNullImage),
               );
             },
-            itemCount: 10,
+            itemCount: state.Books.length,
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
           ),
