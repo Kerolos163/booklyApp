@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../utils/styles.dart';
 
 Widget Custom_Button(
-    {required BackgroundColor, required TextColor, BorderRadius,required String txt,double? fontsize}) {
+    {required BackgroundColor, required TextColor, BorderRadius,required String txt,double? fontsize,required Function onPressed}) {
   return SizedBox(
     height: 48,
     child: TextButton(
-      onPressed: () {},
+      onPressed: () => onPressed(),
       style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
               borderRadius:BorderRadius),

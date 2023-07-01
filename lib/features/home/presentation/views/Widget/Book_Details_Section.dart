@@ -51,7 +51,7 @@ BookDetailsSection(context, BookModel bookmodel) {
         const SizedBox(
           height: 37,
         ),
-        BookAction(),
+        BookAction(bookmodel),
         const SizedBox(height: 50),
         Align(
             alignment: Alignment.centerLeft,

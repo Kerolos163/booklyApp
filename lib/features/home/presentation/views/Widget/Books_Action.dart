@@ -1,8 +1,10 @@
+import 'package:bookly_app/features/home/Data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/widget/custom_Button.dart';
 
-Widget BookAction() {
+Widget BookAction(BookModel Book) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 8),
     child: Row(
@@ -14,7 +16,10 @@ Widget BookAction() {
               TextColor: Colors.black,
               BorderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16),
-                  bottomLeft: Radius.circular(16))),
+                  bottomLeft: Radius.circular(16)),
+              onPressed: () {
+                print("FREE");
+              }),
         ),
         Expanded(
           child: Custom_Button(
@@ -24,7 +29,13 @@ Widget BookAction() {
               TextColor: Colors.white,
               BorderRadius: const BorderRadius.only(
                   topRight: Radius.circular(16),
-                  bottomRight: Radius.circular(16))),
+                  bottomRight: Radius.circular(16)),
+              onPressed: () async {
+                final Uri url = Uri.parse(Book.volumeInfo.previewLink!);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
+                }
+              }),
         ),
       ],
     ),
