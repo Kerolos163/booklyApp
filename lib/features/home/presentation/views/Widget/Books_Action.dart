@@ -31,7 +31,7 @@ Widget BookAction(BookModel Book) {
             else
               Expanded(
                 child: Custom_Button(
-                    txt: "Preview",
+                    txt: get_text(Book),
                     fontsize: 16,
                     BackgroundColor: const Color(0xffEF8262),
                     TextColor: Colors.white,
@@ -39,8 +39,13 @@ Widget BookAction(BookModel Book) {
                         topRight: Radius.circular(16),
                         bottomRight: Radius.circular(16)),
                     onPressed: () async {
-                      final Uri url = Uri.parse(Book.volumeInfo.previewLink!);
-                      URLCubit.get(context).got_TO_URL(url: url);
+                      if (Book.volumeInfo.previewLink != null) {
+                        final Uri url = Uri.parse(Book.volumeInfo.previewLink!);
+                        URLCubit.get(context).got_TO_URL(
+                          context,
+                          url: url,
+                        );
+                      }
                     }),
               ),
           ],
@@ -48,4 +53,12 @@ Widget BookAction(BookModel Book) {
       );
     },
   );
+}
+
+String get_text(BookModel book) {
+  if (book.volumeInfo.previewLink == null) {
+    return "Not Avaliable";
+  } else {
+    return "Preview";
+  }
 }
