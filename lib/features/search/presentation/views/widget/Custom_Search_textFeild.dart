@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Custom_Search_TextField() {
+import '../view_model/Search_cubit/cubit.dart';
+
+Custom_Search_TextField(context) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: TextField(
       onChanged: (value) {
-        print(value);
+        if (value.isNotEmpty) {
+          SearchCubit.get(context).SearchFeachedBooks(txt: value);
+        } else {
+          SearchCubit.get(context).SearchFeachedBooks();
+        }
       },
       decoration: InputDecoration(
           hintText: "Search",

@@ -5,18 +5,26 @@ abstract class SearchState {}
 
 class searchinitstate extends SearchState {}
 
-class searchLoadingstate extends SearchState {}
+class FetchLoadingstate extends SearchState {}
 
-class searchSuccessstate extends SearchState {
-  List<BookModel> Books;
-  searchSuccessstate({
-    required this.Books,
-  });
+class FetchSuccessstate extends SearchState {
+
 }
 
-class searchFailurestate extends SearchState {
+class FetchFailurestate extends SearchState {
   final String error;
-  searchFailurestate({
+  FetchFailurestate({
+    required this.error,
+  });
+}
+class SearchLoadingstate extends SearchState {}
+
+class SearchSuccessstate extends SearchState {
+}
+
+class SearchFailurestate extends SearchState {
+  final String error;
+  SearchFailurestate({
     required this.error,
   });
 }

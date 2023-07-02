@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/Data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -23,35 +24,38 @@ class Search_View_Bpdy extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            Custom_Search_TextField(),
+            Custom_Search_TextField(context),
             const SizedBox(
               height: 20,
             ),
             const Padding(
               padding: EdgeInsets.only(left: 30),
-              child: Text("Best Seller", style: Styles.textStyle18),
+              child: Text("Result", style: Styles.textStyle18),
             ),
             const SizedBox(
               height: 20,
             ),
-            Expanded(child: Search_ListView())
+            if(state is SearchLoadingstate)
+            const LinearProgressIndicator(),
+            if (state is SearchSuccessstate)
+              Expanded(child: Search_ListView(SearchCubit.get(context).SearchList))
           ],
         );
       },
     );
   }
 
-  Search_ListView() {
+  Search_ListView(List<BookModel> book ) {
     return ListView.builder(
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          // child: BookListViewItem(context),
+        return  Padding(
+          padding:const EdgeInsets.symmetric(vertical: 10),
+          child: BookListViewItem(context,book[index]),
         );
       },
-      itemCount: 10,
+      itemCount: book.length,
       physics: const BouncingScrollPhysics(),
     );
   }
