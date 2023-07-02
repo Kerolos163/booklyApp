@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/styles.dart';
 import '../../../../home/presentation/views/Widget/best_seller_List_Item.dart';
+import '../view_model/Search_cubit/cubit.dart';
+import '../view_model/Search_cubit/state.dart';
 import 'Custom_Search_textFeild.dart';
 
 class Search_View_Bpdy extends StatelessWidget {
@@ -12,25 +15,29 @@ class Search_View_Bpdy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(
-          height: 5,
-        ),
-        Custom_Search_TextField(),
-        const SizedBox(
-          height: 20,
-        ),
-        const Padding(
-          padding: EdgeInsets.only(left: 30),
-          child: Text("Best Seller", style: Styles.textStyle18),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Expanded(child: Search_ListView())
-      ],
+    return BlocBuilder<SearchCubit, SearchState>(
+      builder: (context, state) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 5,
+            ),
+            Custom_Search_TextField(),
+            const SizedBox(
+              height: 20,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: Text("Best Seller", style: Styles.textStyle18),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(child: Search_ListView())
+          ],
+        );
+      },
     );
   }
 

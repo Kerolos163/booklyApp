@@ -5,6 +5,9 @@ Custom_Search_TextField() {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: TextField(
+      onChanged: (value) {
+        print(value);
+      },
       decoration: InputDecoration(
           hintText: "Search",
           suffixIcon: IconButton(

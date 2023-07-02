@@ -14,6 +14,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 import 'core/utils/app_router.dart';
 import 'features/home/presentation/view_models/Feature_Books_Cubit/cubit.dart';
+import 'features/search/Data/search_repoimp.dart';
+import 'features/search/presentation/views/view_model/Search_cubit/cubit.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,7 +41,7 @@ class Bookly extends StatelessWidget {
           )..FetchNewestBooks(),
         ),
         // BlocProvider(
-        //   create: (context) => URLCubit()
+        //   create: (context) => SearchCubit(getIt.get<searchrepoImp>())..FetchBooks()
         // ),
       ],
       child: MaterialApp.router(
