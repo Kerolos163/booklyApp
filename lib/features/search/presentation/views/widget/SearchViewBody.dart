@@ -22,7 +22,7 @@ class Search_View_Bpdy extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: 5,
+              height: 30,
             ),
             Custom_Search_TextField(context),
             const SizedBox(
