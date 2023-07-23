@@ -10,13 +10,19 @@ Widget CustomAppBar(context) {
     padding: const EdgeInsets.only(left: 30, right: 10, top: 50, bottom: 15),
     child: Row(
       children: [
-        Image.asset(AssetData.logo, height: 20),
+        Hero(
+          tag: "logo",
+          child: Image.asset(AssetData.logo, height: 20),
+        ),
         const Spacer(),
         IconButton(
           onPressed: () {
             GoRouter.of(context).push(AppRouter.KSearchView);
           },
-          icon: const Icon(FontAwesomeIcons.magnifyingGlass,size: 22,),
+          icon: const Icon(
+            FontAwesomeIcons.magnifyingGlass,
+            size: 22,
+          ),
         )
       ],
     ),

@@ -42,7 +42,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Image(image: AssetImage(AssetData.logo)),
+        Hero(
+          tag: "logo",
+          transitionOnUserGestures: true,
+          child: Image.asset(AssetData.logo),
+        ),
         const SizedBox(
           height: 5,
         ),
@@ -67,10 +71,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void NavToHome() {
     Future.delayed(
-      const Duration(seconds: 3),
+      KTranstionDuration,
       () {
-        // Get.to(() => const homeview(),
-        //     transition: Transition.fade, duration: KTranstionDuration);
         GoRouter.of(context).push(AppRouter.Khomeview);
       },
     );
