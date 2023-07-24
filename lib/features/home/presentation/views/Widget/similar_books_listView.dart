@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../constants.dart';
+import '../../../../../core/utils/app_router.dart';
 import '../../../../../core/widget/Custom_error_widget.dart';
 import '../../../../../core/widget/custom_Loading_Indicator.dart';
 import '../../view_models/Similar_Books_Cubit/cubit.dart';
@@ -18,10 +20,16 @@ SimilarBooksListview(context) {
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.only(left: 10),
-                child: CustomBookImage(context,
-                    img: state.Books[index].volumeInfo.imageLinks?.thumbnail ??
-                        KimagetoNullImage,
-                    ID: state.Books[index].id!),
+                child: InkWell(
+                  onTap: () {
+                    print("Wesso");
+                  },
+                  child: CustomBookImage(context,
+                      img:
+                          state.Books[index].volumeInfo.imageLinks?.thumbnail ??
+                              KimagetoNullImage,
+                      ID: state.Books[index].id!),
+                ),
               );
             },
             itemCount: state.Books.length,
