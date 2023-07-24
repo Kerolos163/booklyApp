@@ -27,7 +27,7 @@ Widget BooklyListView(context) {
                     padding: const EdgeInsets.only(left: 15),
                     child: CustomBookImage(context,
                         img: state.Books[index].volumeInfo.imageLinks!.thumbnail
-                            as String),
+                            as String,ID:state.Books[index].id! ),
                   ),
                 );
               },

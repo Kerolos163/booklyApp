@@ -20,7 +20,8 @@ SimilarBooksListview(context) {
                 padding: const EdgeInsets.only(left: 10),
                 child: CustomBookImage(context,
                     img: state.Books[index].volumeInfo.imageLinks?.thumbnail ??
-                        KimagetoNullImage),
+                        KimagetoNullImage,
+                    ID: state.Books[index].id!),
               );
             },
             itemCount: state.Books.length,

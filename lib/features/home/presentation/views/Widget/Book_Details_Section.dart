@@ -20,7 +20,7 @@ BookDetailsSection(context, BookModel bookmodel) {
           padding: EdgeInsets.symmetric(horizontal: width * .18),
           child: CustomBookImage(context,
               img: bookmodel.volumeInfo.imageLinks?.thumbnail ??
-                  KimagetoNullImage),
+                  KimagetoNullImage,ID: bookmodel.id!),
         ),
         const SizedBox(
           height: 40,
